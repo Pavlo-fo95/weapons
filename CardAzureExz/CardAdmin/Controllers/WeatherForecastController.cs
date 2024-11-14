@@ -1,7 +1,10 @@
+using CardAdmin.Role;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CardAdmin.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -18,6 +21,7 @@ namespace CardAdmin.Controllers
             _logger = logger;
         }
 
+        //[Authorize(Roles = UserRoles.Admin)]
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
